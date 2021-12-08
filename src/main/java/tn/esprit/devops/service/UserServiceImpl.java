@@ -1,10 +1,13 @@
-package tn.esprit.devops;
+package tn.esprit.devops.service;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import tn.esprit.devops.entity.User;
+import tn.esprit.devops.repository.UserRepository;
 
 @Service
 public class UserServiceImpl implements IUserService {
@@ -41,11 +44,14 @@ public class UserServiceImpl implements IUserService {
 		
 		try {
 			// TODO Log à ajouter en début de la méthode 
+			l.info("In Methode AddUser");
 			u_saved = userRepository.save(u); 
 			// TODO Log à ajouter à la fin de la méthode 
+			l.info("User added with succes"+u.getLastName());
 			
 		} catch (Exception e) {
 			// TODO log ici : l....("error in addUser() : " + e);
+			l.error("error with Methode Add User : " + e); 
 		}
 		
 		return u_saved; 
@@ -58,11 +64,14 @@ public class UserServiceImpl implements IUserService {
 		
 		try {
 			// TODO Log à ajouter en début de la méthode 
+			l.info("In Methode updateUser");
 			userUpdated = userRepository.save(u); 
 			// TODO Log à ajouter à la fin de la méthode 
+			l.info("User updated with succes"+u.getLastName());
 			
 		} catch (Exception e) {
 			// TODO log ici : l....("error in updateUser() : " + e);
+			l.error("error with Methode update User : " + e); 
 		}
 		
 		return userUpdated; 
@@ -73,11 +82,14 @@ public class UserServiceImpl implements IUserService {
 		
 		try {
 			// TODO Log à ajouter en début de la méthode 
+			l.info("In Methode delete User:"+id);
 			userRepository.deleteById(Long.parseLong(id)); 
 			// TODO Log à ajouter à la fin de la méthode 
+			l.info("User  was deleted successfully");
 			
 		} catch (Exception e) {
 			// TODO log ici : l....("error in deleteUser() : " + e);
+			l.error("error with Methode delete User : " + e);
 		}
 		
 	}
@@ -87,11 +99,14 @@ public class UserServiceImpl implements IUserService {
 		User u = null; 
 		try {
 			// TODO Log à ajouter en début de la méthode 
+			l.info("In Methode retrieve User:"+id);
 			u =  userRepository.findById(Long.parseLong(id)).get(); 
 			// TODO Log à ajouter à la fin de la méthode 
+			l.info("User retrieved");			
 			
 		} catch (Exception e) {
 			// TODO log ici : l....("error in retrieveUser() : " + e);
+			l.error("error with Methode delete User : " + e);
 		}
 
 		return u; 

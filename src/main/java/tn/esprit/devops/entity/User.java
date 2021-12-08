@@ -1,4 +1,4 @@
-package tn.esprit.devops;
+package tn.esprit.devops.entity;
 
 import java.io.Serializable;
 import java.util.Date;

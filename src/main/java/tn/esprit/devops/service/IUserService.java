@@ -1,6 +1,8 @@
-package tn.esprit.devops;
+package tn.esprit.devops.service;
 
 import java.util.List;
+
+import tn.esprit.devops.entity.User;
 
 
 
